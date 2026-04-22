@@ -1,0 +1,41 @@
+# venv
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Data (ВАЖНО — не пушим датасеты)
+data/
+*.zip
+*.tar
+*.gz
+
+# Models / outputs (если большие)
+outputs/
+checkpoints/
+models/
+
+# Env
+.env
+
+# Cache
+.cache/
