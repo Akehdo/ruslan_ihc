@@ -36,7 +36,7 @@ IMAGE_SIZE = 224
 SUPPORTED_MODELS = ("resnet18", "resnet50", "convnext", "convnext_tiny")
 
 
-def set_seed(seed: int) -> None:
+def set_seed(seed: int, deterministic: bool = True) -> None:
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -45,8 +45,17 @@ def set_seed(seed: int) -> None:
         torch.cuda.manual_seed(seed)
         torch.cuda.manual_seed_all(seed)
 
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = deterministic
+    torch.backends.cudnn.benchmark = not deterministic
+
+
+def configure_torch_performance(device: torch.device, deterministic: bool = True) -> None:
+    if device.type != "cuda":
+        return
+
+    torch.backends.cudnn.benchmark = not deterministic
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
 
 
 def get_device() -> torch.device:

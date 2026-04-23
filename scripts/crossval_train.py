@@ -1,6 +1,8 @@
 import argparse
 import csv
+import logging
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -24,6 +26,7 @@ from common import (  # noqa: E402
     SUPPORTED_MODELS,
     TRAIN_DIR,
     ensure_project_dirs,
+    configure_torch_performance,
     get_device,
     get_model,
     get_transforms,
@@ -34,6 +37,7 @@ from common import (  # noqa: E402
 
 CV_RESULTS = OUTPUTS_DIR / "cv_results.txt"
 CV_METRICS_CSV = OUTPUTS_DIR / "cv_metrics.csv"
+LOGS_DIR = OUTPUTS_DIR / "logs"
 
 
 def parse_args() -> argparse.Namespace:
@@ -47,29 +51,77 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-workers", type=int, default=0)
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--no-augmentation", action="store_true")
+    parser.add_argument("--deterministic", action="store_true")
+    parser.add_argument("--no-amp", action="store_true")
+    parser.add_argument("--channels-last", action="store_true")
+    parser.add_argument("--prefetch-factor", type=int, default=2)
     return parser.parse_args()
 
 
-def train_one_epoch(model, train_loader, criterion, optimizer, device, epoch, epochs) -> float:
+def setup_logger(args: argparse.Namespace) -> logging.Logger:
+    LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_path = LOGS_DIR / f"{args.model}_seed_{args.seed}_{timestamp}.log"
+
+    logger = logging.getLogger("crossval_train")
+    logger.setLevel(logging.INFO)
+    logger.handlers.clear()
+    logger.propagate = False
+
+    formatter = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
+
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
+
+    file_handler = logging.FileHandler(log_path, encoding="utf-8")
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
+    logger.info("Log file: %s", log_path)
+    return logger
+
+
+def train_one_epoch(
+    model,
+    train_loader,
+    criterion,
+    optimizer,
+    device,
+    epoch,
+    epochs,
+    amp_enabled,
+    scaler,
+    channels_last,
+) -> float:
     model.train()
     running_loss = 0.0
 
-    for images, labels in tqdm(train_loader, desc=f"Epoch {epoch + 1}/{epochs}"):
-        images = images.to(device)
-        labels = labels.to(device)
+    for images, labels in tqdm(train_loader, desc=f"Epoch {epoch + 1}/{epochs}", file=sys.stdout):
+        images = images.to(device, non_blocking=True)
+        labels = labels.to(device, non_blocking=True)
+        if channels_last:
+            images = images.contiguous(memory_format=torch.channels_last)
 
-        optimizer.zero_grad()
-        outputs = model(images)
-        loss = criterion(outputs, labels)
-        loss.backward()
-        optimizer.step()
+        optimizer.zero_grad(set_to_none=True)
+        with torch.cuda.amp.autocast(enabled=amp_enabled):
+            outputs = model(images)
+            loss = criterion(outputs, labels)
+
+        if amp_enabled:
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
+        else:
+            loss.backward()
+            optimizer.step()
 
         running_loss += loss.item()
 
     return running_loss / len(train_loader)
 
 
-def evaluate_epoch(model, val_loader, criterion, device) -> tuple[float, dict]:
+def evaluate_epoch(model, val_loader, criterion, device, amp_enabled, channels_last) -> tuple[float, dict]:
     model.eval()
     running_loss = 0.0
     y_true = []
@@ -77,11 +129,14 @@ def evaluate_epoch(model, val_loader, criterion, device) -> tuple[float, dict]:
 
     with torch.no_grad():
         for images, labels in val_loader:
-            images = images.to(device)
-            labels = labels.to(device)
+            images = images.to(device, non_blocking=True)
+            labels = labels.to(device, non_blocking=True)
+            if channels_last:
+                images = images.contiguous(memory_format=torch.channels_last)
 
-            outputs = model(images)
-            loss = criterion(outputs, labels)
+            with torch.cuda.amp.autocast(enabled=amp_enabled):
+                outputs = model(images)
+                loss = criterion(outputs, labels)
             running_loss += loss.item()
 
             preds = torch.argmax(outputs, dim=1)
@@ -93,21 +148,51 @@ def evaluate_epoch(model, val_loader, criterion, device) -> tuple[float, dict]:
     return val_loss, report
 
 
-def train_one_fold(model, train_loader, val_loader, device, epochs, lr, patience, best_path, last_path):
+def train_one_fold(
+    model,
+    train_loader,
+    val_loader,
+    device,
+    epochs,
+    lr,
+    patience,
+    best_path,
+    last_path,
+    amp_enabled,
+    channels_last,
+    logger,
+):
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+    scaler = torch.cuda.amp.GradScaler(enabled=amp_enabled)
 
     best_val_loss = float("inf")
     patience_counter = 0
     best_report = None
 
     for epoch in range(epochs):
-        train_loss = train_one_epoch(model, train_loader, criterion, optimizer, device, epoch, epochs)
-        val_loss, report = evaluate_epoch(model, val_loader, criterion, device)
+        train_loss = train_one_epoch(
+            model,
+            train_loader,
+            criterion,
+            optimizer,
+            device,
+            epoch,
+            epochs,
+            amp_enabled,
+            scaler,
+            channels_last,
+        )
+        val_loss, report = evaluate_epoch(model, val_loader, criterion, device, amp_enabled, channels_last)
 
-        print(
-            f"Epoch [{epoch + 1}/{epochs}] "
-            f"Train Loss: {train_loss:.4f} | Val Loss: {val_loss:.4f}"
+        logger.info(
+            "Epoch [%s/%s] train_loss=%.4f val_loss=%.4f accuracy=%.4f macro_f1=%.4f",
+            epoch + 1,
+            epochs,
+            train_loss,
+            val_loss,
+            report["accuracy"],
+            report["macro avg"]["f1-score"],
         )
 
         if val_loss < best_val_loss:
@@ -115,15 +200,15 @@ def train_one_fold(model, train_loader, val_loader, device, epochs, lr, patience
             patience_counter = 0
             best_report = report
             torch.save(model.state_dict(), best_path)
-            print(f"New best model saved: {best_path}")
+            logger.info("New best model saved: %s", best_path)
         else:
             patience_counter += 1
-            print(f"No val improvement for {patience_counter} epoch(s)")
+            logger.info("No val improvement for %s epoch(s)", patience_counter)
 
         torch.save(model.state_dict(), last_path)
 
         if patience_counter >= patience:
-            print("Early stopping triggered")
+            logger.info("Early stopping triggered")
             break
 
     return best_report
@@ -165,48 +250,73 @@ def append_fold_metrics(args: argparse.Namespace, fold_reports: list[dict]) -> N
 
 def main() -> None:
     args = parse_args()
-    set_seed(args.seed)
+    logger = setup_logger(args)
+    set_seed(args.seed, deterministic=args.deterministic)
     ensure_project_dirs()
     validate_dataset_dirs()
 
     device = get_device()
+    configure_torch_performance(device, deterministic=args.deterministic)
     pin_memory = device.type == "cuda"
     use_augmentation = not args.no_augmentation
+    amp_enabled = device.type == "cuda" and not args.no_amp
 
     train_transform, val_transform = get_transforms(use_augmentation=use_augmentation)
 
     full_dataset = ImageFolder(TRAIN_DIR, transform=train_transform)
     targets = full_dataset.targets
 
+    logger.info("Args: %s", vars(args))
+    logger.info("Device: %s", device)
+    if device.type == "cuda":
+        logger.info("CUDA device: %s", torch.cuda.get_device_name(0))
+    logger.info("Dataset: %s", TRAIN_DIR)
+    logger.info("Classes: %s", full_dataset.class_to_idx)
+    logger.info("Train images: %s", len(full_dataset))
+    logger.info("AMP enabled: %s", amp_enabled)
+    logger.info("Channels last: %s", args.channels_last)
+    logger.info("TF32 enabled: True")
+    logger.info("CuDNN benchmark: %s", torch.backends.cudnn.benchmark)
+
     skf = StratifiedKFold(n_splits=args.folds, shuffle=True, random_state=args.seed)
     fold_reports = []
 
     for fold, (train_idx, val_idx) in enumerate(skf.split(range(len(targets)), targets), 1):
-        print(f"\n=== Fold {fold}/{args.folds} ===")
+        logger.info("=== Fold %s/%s ===", fold, args.folds)
 
         train_subset = Subset(full_dataset, train_idx)
         val_dataset = ImageFolder(TRAIN_DIR, transform=val_transform)
         val_subset = Subset(val_dataset, val_idx)
 
+        loader_kwargs = {
+            "num_workers": args.num_workers,
+            "pin_memory": pin_memory,
+        }
+        if args.num_workers > 0:
+            loader_kwargs["persistent_workers"] = True
+            loader_kwargs["prefetch_factor"] = args.prefetch_factor
+
         train_loader = DataLoader(
             train_subset,
             batch_size=args.batch_size,
             shuffle=True,
-            num_workers=args.num_workers,
-            pin_memory=pin_memory,
+            **loader_kwargs,
         )
         val_loader = DataLoader(
             val_subset,
             batch_size=args.batch_size,
             shuffle=False,
-            num_workers=args.num_workers,
-            pin_memory=pin_memory,
+            **loader_kwargs,
         )
 
         model = get_model(args.model).to(device)
+        if args.channels_last and device.type == "cuda":
+            model = model.to(memory_format=torch.channels_last)
 
         best_path = MODELS_DIR / f"{args.model}_cv_fold_{fold}_seed_{args.seed}_best.pth"
         last_path = MODELS_DIR / f"{args.model}_cv_fold_{fold}_seed_{args.seed}_last.pth"
+        logger.info("Best checkpoint: %s", best_path)
+        logger.info("Last checkpoint: %s", last_path)
 
         report = train_one_fold(
             model=model,
@@ -218,6 +328,9 @@ def main() -> None:
             patience=args.patience,
             best_path=best_path,
             last_path=last_path,
+            amp_enabled=amp_enabled,
+            channels_last=args.channels_last and device.type == "cuda",
+            logger=logger,
         )
         if report is not None:
             fold_reports.append(report)
@@ -234,12 +347,12 @@ def main() -> None:
         f"Mean Macro F1: {macro_f1:.4f}\n"
     )
 
-    print(summary)
+    logger.info(summary.strip())
     with CV_RESULTS.open("a", encoding="utf-8") as file:
         file.write(summary + "\n")
 
     append_fold_metrics(args, fold_reports)
-    print(f"Fold metrics appended to: {CV_METRICS_CSV}")
+    logger.info("Fold metrics appended to: %s", CV_METRICS_CSV)
 
 
 if __name__ == "__main__":
