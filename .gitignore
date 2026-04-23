@@ -23,13 +23,14 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Data (ВАЖНО — не пушим датасеты)
+# Data
 data/
+src/data/
 *.zip
 *.tar
 *.gz
 
-# Models / outputs (если большие)
+# Models / outputs
 outputs/
 checkpoints/
 models/
