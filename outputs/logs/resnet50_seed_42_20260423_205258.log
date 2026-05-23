@@ -1,0 +1,129 @@
+2026-04-23 20:52:58,124 | INFO | Log file: /raid/home/user3/projects/ruslan_ihc/outputs/logs/resnet50_seed_42_20260423_205258.log
+2026-04-23 20:52:58,378 | INFO | Args: {'model': 'resnet50', 'seed': 42, 'epochs': 50, 'patience': 5, 'batch_size': 128, 'lr': 0.0001, 'num_workers': 8, 'folds': 5, 'no_augmentation': False, 'deterministic': False, 'no_amp': False, 'channels_last': True, 'prefetch_factor': 4}
+2026-04-23 20:52:58,378 | INFO | Device: cuda
+2026-04-23 20:52:58,501 | INFO | CUDA device: NVIDIA H200
+2026-04-23 20:52:58,501 | INFO | Dataset: /raid/home/user3/projects/ruslan_ihc/src/data/HER2_dataset/her_2_patch/Patch-based-dataset/train_data_patch
+2026-04-23 20:52:58,501 | INFO | Classes: {'class_0': 0, 'class_1+': 1, 'class_2+': 2, 'class_3+': 3}
+2026-04-23 20:52:58,501 | INFO | Train images: 8797
+2026-04-23 20:52:58,501 | INFO | AMP enabled: True
+2026-04-23 20:52:58,501 | INFO | Channels last: True
+2026-04-23 20:52:58,501 | INFO | TF32 enabled: True
+2026-04-23 20:52:58,501 | INFO | CuDNN benchmark: True
+2026-04-23 20:52:58,503 | INFO | === Fold 1/5 ===
+2026-04-23 20:53:01,905 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_1_seed_42_best.pth
+2026-04-23 20:53:01,905 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_1_seed_42_last.pth
+2026-04-23 20:53:12,456 | INFO | Epoch [1/50] train_loss=0.5441 val_loss=0.2012 accuracy=0.9222 macro_f1=0.9100
+2026-04-23 20:53:12,563 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_1_seed_42_best.pth
+2026-04-23 20:53:22,886 | INFO | Epoch [2/50] train_loss=0.2036 val_loss=0.1916 accuracy=0.9267 macro_f1=0.9100
+2026-04-23 20:53:23,012 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_1_seed_42_best.pth
+2026-04-23 20:53:33,517 | INFO | Epoch [3/50] train_loss=0.1550 val_loss=0.1621 accuracy=0.9335 macro_f1=0.9245
+2026-04-23 20:53:33,641 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_1_seed_42_best.pth
+2026-04-23 20:53:43,688 | INFO | Epoch [4/50] train_loss=0.1293 val_loss=0.1578 accuracy=0.9415 macro_f1=0.9283
+2026-04-23 20:53:43,805 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_1_seed_42_best.pth
+2026-04-23 20:53:53,845 | INFO | Epoch [5/50] train_loss=0.1089 val_loss=0.1790 accuracy=0.9409 macro_f1=0.9271
+2026-04-23 20:53:53,845 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 20:54:03,968 | INFO | Epoch [6/50] train_loss=0.0946 val_loss=0.1674 accuracy=0.9375 macro_f1=0.9253
+2026-04-23 20:54:03,968 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 20:54:14,080 | INFO | Epoch [7/50] train_loss=0.0790 val_loss=0.1508 accuracy=0.9472 macro_f1=0.9322
+2026-04-23 20:54:14,211 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_1_seed_42_best.pth
+2026-04-23 20:54:24,274 | INFO | Epoch [8/50] train_loss=0.0691 val_loss=0.1831 accuracy=0.9398 macro_f1=0.9218
+2026-04-23 20:54:24,274 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 20:54:34,448 | INFO | Epoch [9/50] train_loss=0.0558 val_loss=0.1886 accuracy=0.9398 macro_f1=0.9218
+2026-04-23 20:54:34,448 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 20:54:44,443 | INFO | Epoch [10/50] train_loss=0.0555 val_loss=0.1725 accuracy=0.9466 macro_f1=0.9359
+2026-04-23 20:54:44,443 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 20:54:54,624 | INFO | Epoch [11/50] train_loss=0.0523 val_loss=0.2361 accuracy=0.9301 macro_f1=0.9188
+2026-04-23 20:54:54,624 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 20:55:04,717 | INFO | Epoch [12/50] train_loss=0.0477 val_loss=0.1702 accuracy=0.9398 macro_f1=0.9294
+2026-04-23 20:55:04,718 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 20:55:04,851 | INFO | Early stopping triggered
+2026-04-23 20:55:04,852 | INFO | === Fold 2/5 ===
+2026-04-23 20:55:05,250 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_2_seed_42_best.pth
+2026-04-23 20:55:05,250 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_2_seed_42_last.pth
+2026-04-23 20:55:16,223 | INFO | Epoch [1/50] train_loss=0.5467 val_loss=0.2346 accuracy=0.9170 macro_f1=0.9009
+2026-04-23 20:55:16,342 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_2_seed_42_best.pth
+2026-04-23 20:55:26,938 | INFO | Epoch [2/50] train_loss=0.2101 val_loss=0.1692 accuracy=0.9347 macro_f1=0.9216
+2026-04-23 20:55:27,065 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_2_seed_42_best.pth
+2026-04-23 20:55:37,414 | INFO | Epoch [3/50] train_loss=0.1552 val_loss=0.1623 accuracy=0.9477 macro_f1=0.9391
+2026-04-23 20:55:37,543 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_2_seed_42_best.pth
+2026-04-23 20:55:47,885 | INFO | Epoch [4/50] train_loss=0.1305 val_loss=0.1336 accuracy=0.9494 macro_f1=0.9399
+2026-04-23 20:55:48,016 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_2_seed_42_best.pth
+2026-04-23 20:55:58,245 | INFO | Epoch [5/50] train_loss=0.1152 val_loss=0.1713 accuracy=0.9295 macro_f1=0.9233
+2026-04-23 20:55:58,245 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 20:56:08,592 | INFO | Epoch [6/50] train_loss=0.0999 val_loss=0.1493 accuracy=0.9443 macro_f1=0.9381
+2026-04-23 20:56:08,592 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 20:56:18,942 | INFO | Epoch [7/50] train_loss=0.0850 val_loss=0.1668 accuracy=0.9398 macro_f1=0.9350
+2026-04-23 20:56:18,942 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 20:56:29,258 | INFO | Epoch [8/50] train_loss=0.0722 val_loss=0.1504 accuracy=0.9523 macro_f1=0.9463
+2026-04-23 20:56:29,258 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 20:56:39,434 | INFO | Epoch [9/50] train_loss=0.0605 val_loss=0.1518 accuracy=0.9472 macro_f1=0.9361
+2026-04-23 20:56:39,434 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 20:56:39,555 | INFO | Early stopping triggered
+2026-04-23 20:56:39,556 | INFO | === Fold 3/5 ===
+2026-04-23 20:56:40,008 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_3_seed_42_best.pth
+2026-04-23 20:56:40,008 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_3_seed_42_last.pth
+2026-04-23 20:56:50,786 | INFO | Epoch [1/50] train_loss=0.5368 val_loss=0.2560 accuracy=0.8926 macro_f1=0.8788
+2026-04-23 20:56:50,893 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_3_seed_42_best.pth
+2026-04-23 20:57:00,824 | INFO | Epoch [2/50] train_loss=0.2165 val_loss=0.1848 accuracy=0.9221 macro_f1=0.9089
+2026-04-23 20:57:00,958 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_3_seed_42_best.pth
+2026-04-23 20:57:10,831 | INFO | Epoch [3/50] train_loss=0.1497 val_loss=0.1495 accuracy=0.9449 macro_f1=0.9332
+2026-04-23 20:57:10,961 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_3_seed_42_best.pth
+2026-04-23 20:57:20,868 | INFO | Epoch [4/50] train_loss=0.1263 val_loss=0.1682 accuracy=0.9392 macro_f1=0.9265
+2026-04-23 20:57:20,868 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 20:57:30,825 | INFO | Epoch [5/50] train_loss=0.1125 val_loss=0.1712 accuracy=0.9335 macro_f1=0.9236
+2026-04-23 20:57:30,825 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 20:57:40,678 | INFO | Epoch [6/50] train_loss=0.0914 val_loss=0.1548 accuracy=0.9454 macro_f1=0.9330
+2026-04-23 20:57:40,678 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 20:57:50,595 | INFO | Epoch [7/50] train_loss=0.0806 val_loss=0.1577 accuracy=0.9454 macro_f1=0.9328
+2026-04-23 20:57:50,595 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 20:58:00,623 | INFO | Epoch [8/50] train_loss=0.0674 val_loss=0.1730 accuracy=0.9392 macro_f1=0.9274
+2026-04-23 20:58:00,623 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 20:58:00,748 | INFO | Early stopping triggered
+2026-04-23 20:58:00,749 | INFO | === Fold 4/5 ===
+2026-04-23 20:58:01,372 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_4_seed_42_best.pth
+2026-04-23 20:58:01,372 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_4_seed_42_last.pth
+2026-04-23 20:58:12,214 | INFO | Epoch [1/50] train_loss=0.5381 val_loss=0.1956 accuracy=0.9210 macro_f1=0.9056
+2026-04-23 20:58:12,326 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_4_seed_42_best.pth
+2026-04-23 20:58:22,466 | INFO | Epoch [2/50] train_loss=0.2029 val_loss=0.1580 accuracy=0.9341 macro_f1=0.9233
+2026-04-23 20:58:22,610 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_4_seed_42_best.pth
+2026-04-23 20:58:32,679 | INFO | Epoch [3/50] train_loss=0.1514 val_loss=0.2335 accuracy=0.9016 macro_f1=0.8968
+2026-04-23 20:58:32,679 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 20:58:42,842 | INFO | Epoch [4/50] train_loss=0.1326 val_loss=0.1707 accuracy=0.9329 macro_f1=0.9216
+2026-04-23 20:58:42,842 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 20:58:52,917 | INFO | Epoch [5/50] train_loss=0.1085 val_loss=0.1636 accuracy=0.9380 macro_f1=0.9293
+2026-04-23 20:58:52,917 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 20:59:03,058 | INFO | Epoch [6/50] train_loss=0.1058 val_loss=0.1711 accuracy=0.9352 macro_f1=0.9263
+2026-04-23 20:59:03,058 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 20:59:13,192 | INFO | Epoch [7/50] train_loss=0.0808 val_loss=0.1841 accuracy=0.9369 macro_f1=0.9252
+2026-04-23 20:59:13,192 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 20:59:13,324 | INFO | Early stopping triggered
+2026-04-23 20:59:13,325 | INFO | === Fold 5/5 ===
+2026-04-23 20:59:13,796 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_5_seed_42_best.pth
+2026-04-23 20:59:13,796 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_5_seed_42_last.pth
+2026-04-23 20:59:24,378 | INFO | Epoch [1/50] train_loss=0.5465 val_loss=0.1934 accuracy=0.9215 macro_f1=0.9109
+2026-04-23 20:59:24,492 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_5_seed_42_best.pth
+2026-04-23 20:59:34,743 | INFO | Epoch [2/50] train_loss=0.2068 val_loss=0.1538 accuracy=0.9431 macro_f1=0.9344
+2026-04-23 20:59:34,903 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_5_seed_42_best.pth
+2026-04-23 20:59:45,059 | INFO | Epoch [3/50] train_loss=0.1549 val_loss=0.1237 accuracy=0.9517 macro_f1=0.9441
+2026-04-23 20:59:45,193 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_5_seed_42_best.pth
+2026-04-23 20:59:55,360 | INFO | Epoch [4/50] train_loss=0.1314 val_loss=0.1186 accuracy=0.9517 macro_f1=0.9411
+2026-04-23 20:59:55,495 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_5_seed_42_best.pth
+2026-04-23 21:00:05,706 | INFO | Epoch [5/50] train_loss=0.1174 val_loss=0.1372 accuracy=0.9437 macro_f1=0.9350
+2026-04-23 21:00:05,706 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:00:15,915 | INFO | Epoch [6/50] train_loss=0.0903 val_loss=0.1136 accuracy=0.9522 macro_f1=0.9451
+2026-04-23 21:00:16,042 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/resnet50_cv_fold_5_seed_42_best.pth
+2026-04-23 21:00:26,324 | INFO | Epoch [7/50] train_loss=0.0805 val_loss=0.1341 accuracy=0.9505 macro_f1=0.9400
+2026-04-23 21:00:26,324 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:00:36,718 | INFO | Epoch [8/50] train_loss=0.0791 val_loss=0.1296 accuracy=0.9540 macro_f1=0.9454
+2026-04-23 21:00:36,718 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 21:00:46,801 | INFO | Epoch [9/50] train_loss=0.0647 val_loss=0.1443 accuracy=0.9522 macro_f1=0.9442
+2026-04-23 21:00:46,801 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 21:00:56,933 | INFO | Epoch [10/50] train_loss=0.0528 val_loss=0.1292 accuracy=0.9557 macro_f1=0.9493
+2026-04-23 21:00:56,933 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 21:01:06,953 | INFO | Epoch [11/50] train_loss=0.0498 val_loss=0.1528 accuracy=0.9534 macro_f1=0.9431
+2026-04-23 21:01:06,953 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 21:01:07,089 | INFO | Early stopping triggered
+2026-04-23 21:01:07,090 | INFO | CV Summary (resnet50, 5-fold, seed 42)
+Mean Accuracy: 0.9455
+Mean Macro F1: 0.9347
+2026-04-23 21:01:07,090 | INFO | Fold metrics appended to: /raid/home/user3/projects/ruslan_ihc/outputs/cv_metrics.csv

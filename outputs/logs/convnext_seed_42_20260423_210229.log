@@ -1,0 +1,141 @@
+2026-04-23 21:02:29,249 | INFO | Log file: /raid/home/user3/projects/ruslan_ihc/outputs/logs/convnext_seed_42_20260423_210229.log
+2026-04-23 21:02:29,484 | INFO | Args: {'model': 'convnext', 'seed': 42, 'epochs': 50, 'patience': 5, 'batch_size': 128, 'lr': 0.0001, 'num_workers': 8, 'folds': 5, 'no_augmentation': False, 'deterministic': False, 'no_amp': False, 'channels_last': True, 'prefetch_factor': 4}
+2026-04-23 21:02:29,484 | INFO | Device: cuda
+2026-04-23 21:02:29,588 | INFO | CUDA device: NVIDIA H200
+2026-04-23 21:02:29,588 | INFO | Dataset: /raid/home/user3/projects/ruslan_ihc/src/data/HER2_dataset/her_2_patch/Patch-based-dataset/train_data_patch
+2026-04-23 21:02:29,588 | INFO | Classes: {'class_0': 0, 'class_1+': 1, 'class_2+': 2, 'class_3+': 3}
+2026-04-23 21:02:29,588 | INFO | Train images: 8797
+2026-04-23 21:02:29,588 | INFO | AMP enabled: True
+2026-04-23 21:02:29,588 | INFO | Channels last: True
+2026-04-23 21:02:29,588 | INFO | TF32 enabled: True
+2026-04-23 21:02:29,588 | INFO | CuDNN benchmark: True
+2026-04-23 21:02:29,589 | INFO | === Fold 1/5 ===
+2026-04-23 21:02:34,356 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_1_seed_42_best.pth
+2026-04-23 21:02:34,356 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_1_seed_42_last.pth
+2026-04-23 21:02:50,602 | INFO | Epoch [1/50] train_loss=0.3703 val_loss=0.2193 accuracy=0.9119 macro_f1=0.9012
+2026-04-23 21:02:50,714 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_1_seed_42_best.pth
+2026-04-23 21:03:01,089 | INFO | Epoch [2/50] train_loss=0.1934 val_loss=0.1943 accuracy=0.9250 macro_f1=0.9068
+2026-04-23 21:03:01,221 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_1_seed_42_best.pth
+2026-04-23 21:03:11,597 | INFO | Epoch [3/50] train_loss=0.1569 val_loss=0.1603 accuracy=0.9392 macro_f1=0.9309
+2026-04-23 21:03:11,746 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_1_seed_42_best.pth
+2026-04-23 21:03:22,508 | INFO | Epoch [4/50] train_loss=0.1386 val_loss=0.1708 accuracy=0.9364 macro_f1=0.9231
+2026-04-23 21:03:22,508 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:03:33,055 | INFO | Epoch [5/50] train_loss=0.1179 val_loss=0.1753 accuracy=0.9341 macro_f1=0.9184
+2026-04-23 21:03:33,055 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 21:03:43,660 | INFO | Epoch [6/50] train_loss=0.0985 val_loss=0.1493 accuracy=0.9489 macro_f1=0.9418
+2026-04-23 21:03:43,805 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_1_seed_42_best.pth
+2026-04-23 21:03:54,396 | INFO | Epoch [7/50] train_loss=0.0960 val_loss=0.2092 accuracy=0.9295 macro_f1=0.9129
+2026-04-23 21:03:54,396 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:04:04,831 | INFO | Epoch [8/50] train_loss=0.0797 val_loss=0.1593 accuracy=0.9403 macro_f1=0.9325
+2026-04-23 21:04:04,831 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 21:04:15,454 | INFO | Epoch [9/50] train_loss=0.0783 val_loss=0.1700 accuracy=0.9403 macro_f1=0.9322
+2026-04-23 21:04:15,454 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 21:04:25,981 | INFO | Epoch [10/50] train_loss=0.0589 val_loss=0.1913 accuracy=0.9432 macro_f1=0.9341
+2026-04-23 21:04:25,981 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 21:04:36,486 | INFO | Epoch [11/50] train_loss=0.0516 val_loss=0.1714 accuracy=0.9477 macro_f1=0.9383
+2026-04-23 21:04:36,487 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 21:04:36,617 | INFO | Early stopping triggered
+2026-04-23 21:04:36,618 | INFO | === Fold 2/5 ===
+2026-04-23 21:04:37,569 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_2_seed_42_best.pth
+2026-04-23 21:04:37,569 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_2_seed_42_last.pth
+2026-04-23 21:04:47,524 | INFO | Epoch [1/50] train_loss=0.3844 val_loss=0.2009 accuracy=0.9199 macro_f1=0.9000
+2026-04-23 21:04:47,628 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_2_seed_42_best.pth
+2026-04-23 21:04:57,185 | INFO | Epoch [2/50] train_loss=0.2064 val_loss=0.1600 accuracy=0.9341 macro_f1=0.9220
+2026-04-23 21:04:57,324 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_2_seed_42_best.pth
+2026-04-23 21:05:06,926 | INFO | Epoch [3/50] train_loss=0.1687 val_loss=0.1945 accuracy=0.9210 macro_f1=0.9095
+2026-04-23 21:05:06,926 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:05:16,490 | INFO | Epoch [4/50] train_loss=0.1461 val_loss=0.1500 accuracy=0.9432 macro_f1=0.9326
+2026-04-23 21:05:16,655 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_2_seed_42_best.pth
+2026-04-23 21:05:26,049 | INFO | Epoch [5/50] train_loss=0.1223 val_loss=0.1878 accuracy=0.9233 macro_f1=0.9120
+2026-04-23 21:05:26,049 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:05:35,554 | INFO | Epoch [6/50] train_loss=0.1090 val_loss=0.1368 accuracy=0.9494 macro_f1=0.9398
+2026-04-23 21:05:35,712 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_2_seed_42_best.pth
+2026-04-23 21:05:45,137 | INFO | Epoch [7/50] train_loss=0.0982 val_loss=0.1514 accuracy=0.9466 macro_f1=0.9338
+2026-04-23 21:05:45,137 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:05:54,579 | INFO | Epoch [8/50] train_loss=0.0874 val_loss=0.1695 accuracy=0.9381 macro_f1=0.9275
+2026-04-23 21:05:54,580 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 21:06:04,088 | INFO | Epoch [9/50] train_loss=0.0737 val_loss=0.1643 accuracy=0.9460 macro_f1=0.9369
+2026-04-23 21:06:04,088 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 21:06:13,636 | INFO | Epoch [10/50] train_loss=0.0619 val_loss=0.1503 accuracy=0.9483 macro_f1=0.9397
+2026-04-23 21:06:13,636 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 21:06:23,096 | INFO | Epoch [11/50] train_loss=0.0541 val_loss=0.1673 accuracy=0.9460 macro_f1=0.9370
+2026-04-23 21:06:23,096 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 21:06:23,237 | INFO | Early stopping triggered
+2026-04-23 21:06:23,238 | INFO | === Fold 3/5 ===
+2026-04-23 21:06:24,272 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_3_seed_42_best.pth
+2026-04-23 21:06:24,272 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_3_seed_42_last.pth
+2026-04-23 21:06:38,941 | INFO | Epoch [1/50] train_loss=0.3927 val_loss=0.2311 accuracy=0.9051 macro_f1=0.8860
+2026-04-23 21:06:39,069 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_3_seed_42_best.pth
+2026-04-23 21:06:49,659 | INFO | Epoch [2/50] train_loss=0.1894 val_loss=0.1981 accuracy=0.9170 macro_f1=0.9095
+2026-04-23 21:06:49,801 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_3_seed_42_best.pth
+2026-04-23 21:07:00,384 | INFO | Epoch [3/50] train_loss=0.1655 val_loss=0.1639 accuracy=0.9409 macro_f1=0.9279
+2026-04-23 21:07:00,523 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_3_seed_42_best.pth
+2026-04-23 21:07:11,078 | INFO | Epoch [4/50] train_loss=0.1410 val_loss=0.1397 accuracy=0.9471 macro_f1=0.9381
+2026-04-23 21:07:11,223 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_3_seed_42_best.pth
+2026-04-23 21:07:21,680 | INFO | Epoch [5/50] train_loss=0.1124 val_loss=0.1508 accuracy=0.9420 macro_f1=0.9324
+2026-04-23 21:07:21,680 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:07:32,228 | INFO | Epoch [6/50] train_loss=0.1039 val_loss=0.1656 accuracy=0.9335 macro_f1=0.9259
+2026-04-23 21:07:32,229 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 21:07:42,905 | INFO | Epoch [7/50] train_loss=0.0888 val_loss=0.1509 accuracy=0.9460 macro_f1=0.9318
+2026-04-23 21:07:42,905 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 21:07:53,470 | INFO | Epoch [8/50] train_loss=0.0787 val_loss=0.1487 accuracy=0.9477 macro_f1=0.9370
+2026-04-23 21:07:53,470 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 21:08:03,982 | INFO | Epoch [9/50] train_loss=0.0614 val_loss=0.1547 accuracy=0.9494 macro_f1=0.9379
+2026-04-23 21:08:03,982 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 21:08:04,130 | INFO | Early stopping triggered
+2026-04-23 21:08:04,132 | INFO | === Fold 4/5 ===
+2026-04-23 21:08:05,158 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_4_seed_42_best.pth
+2026-04-23 21:08:05,158 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_4_seed_42_last.pth
+2026-04-23 21:08:16,080 | INFO | Epoch [1/50] train_loss=0.4021 val_loss=0.1930 accuracy=0.9159 macro_f1=0.9021
+2026-04-23 21:08:16,205 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_4_seed_42_best.pth
+2026-04-23 21:08:26,767 | INFO | Epoch [2/50] train_loss=0.2030 val_loss=0.1809 accuracy=0.9198 macro_f1=0.9086
+2026-04-23 21:08:26,918 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_4_seed_42_best.pth
+2026-04-23 21:08:37,509 | INFO | Epoch [3/50] train_loss=0.1620 val_loss=0.1570 accuracy=0.9272 macro_f1=0.9172
+2026-04-23 21:08:37,655 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_4_seed_42_best.pth
+2026-04-23 21:08:48,214 | INFO | Epoch [4/50] train_loss=0.1488 val_loss=0.1649 accuracy=0.9244 macro_f1=0.9151
+2026-04-23 21:08:48,214 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:08:58,732 | INFO | Epoch [5/50] train_loss=0.1175 val_loss=0.1498 accuracy=0.9380 macro_f1=0.9226
+2026-04-23 21:08:58,909 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_4_seed_42_best.pth
+2026-04-23 21:09:09,670 | INFO | Epoch [6/50] train_loss=0.1018 val_loss=0.1632 accuracy=0.9375 macro_f1=0.9230
+2026-04-23 21:09:09,670 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:09:20,203 | INFO | Epoch [7/50] train_loss=0.0975 val_loss=0.1663 accuracy=0.9386 macro_f1=0.9260
+2026-04-23 21:09:20,203 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 21:09:30,867 | INFO | Epoch [8/50] train_loss=0.0767 val_loss=0.1623 accuracy=0.9397 macro_f1=0.9252
+2026-04-23 21:09:30,867 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 21:09:41,342 | INFO | Epoch [9/50] train_loss=0.0708 val_loss=0.1801 accuracy=0.9358 macro_f1=0.9225
+2026-04-23 21:09:41,342 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 21:09:51,979 | INFO | Epoch [10/50] train_loss=0.0631 val_loss=0.1619 accuracy=0.9466 macro_f1=0.9354
+2026-04-23 21:09:51,980 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 21:09:52,120 | INFO | Early stopping triggered
+2026-04-23 21:09:52,121 | INFO | === Fold 5/5 ===
+2026-04-23 21:09:53,069 | INFO | Best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_5_seed_42_best.pth
+2026-04-23 21:09:53,069 | INFO | Last checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_5_seed_42_last.pth
+2026-04-23 21:10:03,971 | INFO | Epoch [1/50] train_loss=0.3930 val_loss=0.1782 accuracy=0.9312 macro_f1=0.9216
+2026-04-23 21:10:04,090 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_5_seed_42_best.pth
+2026-04-23 21:10:14,440 | INFO | Epoch [2/50] train_loss=0.1958 val_loss=0.1704 accuracy=0.9369 macro_f1=0.9300
+2026-04-23 21:10:14,581 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_5_seed_42_best.pth
+2026-04-23 21:10:25,021 | INFO | Epoch [3/50] train_loss=0.1650 val_loss=0.1329 accuracy=0.9500 macro_f1=0.9418
+2026-04-23 21:10:25,151 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_5_seed_42_best.pth
+2026-04-23 21:10:35,726 | INFO | Epoch [4/50] train_loss=0.1390 val_loss=0.1626 accuracy=0.9369 macro_f1=0.9316
+2026-04-23 21:10:35,727 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:10:46,082 | INFO | Epoch [5/50] train_loss=0.1345 val_loss=0.1264 accuracy=0.9500 macro_f1=0.9409
+2026-04-23 21:10:46,217 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_5_seed_42_best.pth
+2026-04-23 21:10:56,620 | INFO | Epoch [6/50] train_loss=0.1038 val_loss=0.1168 accuracy=0.9574 macro_f1=0.9487
+2026-04-23 21:10:56,756 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_5_seed_42_best.pth
+2026-04-23 21:11:07,238 | INFO | Epoch [7/50] train_loss=0.0904 val_loss=0.1103 accuracy=0.9574 macro_f1=0.9515
+2026-04-23 21:11:07,367 | INFO | New best model saved: /raid/home/user3/projects/ruslan_ihc/checkpoints/convnext_cv_fold_5_seed_42_best.pth
+2026-04-23 21:11:17,718 | INFO | Epoch [8/50] train_loss=0.0840 val_loss=0.1304 accuracy=0.9505 macro_f1=0.9405
+2026-04-23 21:11:17,718 | INFO | No val improvement for 1 epoch(s)
+2026-04-23 21:11:28,190 | INFO | Epoch [9/50] train_loss=0.0664 val_loss=0.1398 accuracy=0.9483 macro_f1=0.9401
+2026-04-23 21:11:28,191 | INFO | No val improvement for 2 epoch(s)
+2026-04-23 21:11:38,669 | INFO | Epoch [10/50] train_loss=0.0651 val_loss=0.1346 accuracy=0.9562 macro_f1=0.9487
+2026-04-23 21:11:38,670 | INFO | No val improvement for 3 epoch(s)
+2026-04-23 21:11:49,216 | INFO | Epoch [11/50] train_loss=0.0567 val_loss=0.1236 accuracy=0.9562 macro_f1=0.9472
+2026-04-23 21:11:49,216 | INFO | No val improvement for 4 epoch(s)
+2026-04-23 21:11:59,619 | INFO | Epoch [12/50] train_loss=0.0461 val_loss=0.1370 accuracy=0.9585 macro_f1=0.9517
+2026-04-23 21:11:59,619 | INFO | No val improvement for 5 epoch(s)
+2026-04-23 21:11:59,751 | INFO | Early stopping triggered
+2026-04-23 21:11:59,752 | INFO | CV Summary (convnext, 5-fold, seed 42)
+Mean Accuracy: 0.9482
+Mean Macro F1: 0.9388
+2026-04-23 21:11:59,753 | INFO | Fold metrics appended to: /raid/home/user3/projects/ruslan_ihc/outputs/cv_metrics.csv
