@@ -107,16 +107,19 @@ def get_transforms(use_augmentation: bool = True) -> Tuple[transforms.Compose, t
     return train_transform, eval_transform
 
 
-def get_model(model_name: str) -> nn.Module:
+def get_model(model_name: str, num_classes: int = NUM_CLASSES, pretrained: bool = True) -> nn.Module:
     if model_name == "resnet18":
-        model = resnet18(weights=ResNet18_Weights.DEFAULT)
-        model.fc = nn.Linear(model.fc.in_features, NUM_CLASSES)
+        weights = ResNet18_Weights.DEFAULT if pretrained else None
+        model = resnet18(weights=weights)
+        model.fc = nn.Linear(model.fc.in_features, num_classes)
     elif model_name == "resnet50":
-        model = resnet50(weights=ResNet50_Weights.DEFAULT)
-        model.fc = nn.Linear(model.fc.in_features, NUM_CLASSES)
+        weights = ResNet50_Weights.DEFAULT if pretrained else None
+        model = resnet50(weights=weights)
+        model.fc = nn.Linear(model.fc.in_features, num_classes)
     elif model_name in {"convnext", "convnext_tiny"}:
-        model = convnext_tiny(weights=ConvNeXt_Tiny_Weights.DEFAULT)
-        model.classifier[2] = nn.Linear(model.classifier[2].in_features, NUM_CLASSES)
+        weights = ConvNeXt_Tiny_Weights.DEFAULT if pretrained else None
+        model = convnext_tiny(weights=weights)
+        model.classifier[2] = nn.Linear(model.classifier[2].in_features, num_classes)
     else:
         raise ValueError(f"Unsupported model: {model_name}")
 
