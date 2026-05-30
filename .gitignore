@@ -30,6 +30,7 @@ src/data/
 # Models / outputs
 checkpoints/
 models/
+outputs/
 
 # Env
 .env

@@ -139,6 +139,54 @@ def load_marker_records(
     return records
 
 
+def load_manifest_records(
+    manifest_path: Path,
+    marker: str,
+    require_exists: bool = True,
+) -> list[PatchRecord]:
+    marker = normalize_marker(marker)
+    manifest_path = Path(manifest_path)
+    if not manifest_path.exists():
+        raise FileNotFoundError(f"Manifest not found: {manifest_path}")
+
+    records: list[PatchRecord] = []
+    missing = 0
+    with manifest_path.open("r", encoding="utf-8-sig", newline="") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            row_marker = normalize_marker((row.get("marker") or "").strip())
+            if row_marker != marker:
+                continue
+
+            path_text = (row.get("path") or "").strip().replace("\\", "/")
+            if not path_text:
+                continue
+
+            image_path = Path(path_text)
+            if not image_path.is_absolute():
+                image_path = manifest_path.parent / image_path
+
+            if require_exists and not image_path.exists():
+                missing += 1
+                continue
+
+            records.append(
+                PatchRecord(
+                    path=image_path,
+                    label=int(row["label"]),
+                    patient_id=row["patient_id"],
+                    marker=marker,
+                    raw_label=row.get("raw_label", row["label"]),
+                )
+            )
+
+    if not records:
+        raise RuntimeError(f"No usable manifest records found for marker {marker}. Missing files: {missing}")
+    if missing:
+        print(f"WARNING: skipped {missing} missing manifest image paths for {marker}")
+    return records
+
+
 class IHCBinaryPatchDataset(Dataset):
     def __init__(self, records: list[PatchRecord], transform=None):
         self.records = records
@@ -154,23 +202,3 @@ class IHCBinaryPatchDataset(Dataset):
         if self.transform is not None:
             image = self.transform(image)
         return image, record.label
-
-
-def is_readable_image(path: Path) -> bool:
-    try:
-        with Image.open(path) as image:
-            image.verify()
-        return True
-    except Exception:
-        return False
-
-
-def filter_readable_records(records: list[PatchRecord]) -> tuple[list[PatchRecord], list[PatchRecord]]:
-    valid_records = []
-    bad_records = []
-    for record in records:
-        if is_readable_image(record.path):
-            valid_records.append(record)
-        else:
-            bad_records.append(record)
-    return valid_records, bad_records
