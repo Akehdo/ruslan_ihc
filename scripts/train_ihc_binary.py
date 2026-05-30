@@ -216,6 +216,7 @@ def append_metrics(rows: list[dict]):
         "val_images",
         "train_patients",
         "val_patients",
+        "loss",
         "accuracy",
         "precision",
         "recall",
