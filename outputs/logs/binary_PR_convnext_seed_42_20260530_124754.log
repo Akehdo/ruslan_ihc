@@ -1,0 +1,13 @@
+2026-05-30 12:47:54,343 | INFO | Log file: /raid/home/user3/projects/ruslan_ihc/outputs/logs/binary_PR_convnext_seed_42_20260530_124754.log
+2026-05-30 12:48:01,224 | INFO | Marker: PR
+2026-05-30 12:48:01,224 | INFO | Images: 24971
+2026-05-30 12:48:01,224 | INFO | Patients: 60
+2026-05-30 12:48:01,224 | INFO | Label counts: {1: 22099, 0: 2872}
+2026-05-30 12:48:01,224 | INFO | Class meaning: 0=negative, 1=positive
+2026-05-30 12:48:01,257 | INFO | Splitter: StratifiedGroupKFold
+2026-05-30 12:48:01,260 | INFO | Fold 1/5 | train=21540 imgs/49 patients {1: 19000, 0: 2540} | val=3431 imgs/11 patients {0: 332, 1: 3099} | overlap=0
+2026-05-30 12:48:01,300 | INFO | Fold 2/5 | train=21297 imgs/49 patients {1: 18809, 0: 2488} | val=3674 imgs/11 patients {1: 3290, 0: 384} | overlap=0
+2026-05-30 12:48:01,339 | INFO | Fold 3/5 | train=19110 imgs/49 patients {1: 16819, 0: 2291} | val=5861 imgs/11 patients {1: 5280, 0: 581} | overlap=0
+2026-05-30 12:48:01,377 | INFO | Fold 4/5 | train=19012 imgs/46 patients {1: 16962, 0: 2050} | val=5959 imgs/14 patients {0: 822, 1: 5137} | overlap=0
+2026-05-30 12:48:01,415 | INFO | Fold 5/5 | train=18925 imgs/47 patients {1: 16806, 0: 2119} | val=6046 imgs/13 patients {1: 5293, 0: 753} | overlap=0
+2026-05-30 12:48:01,450 | INFO | Dry run requested; skipping training.

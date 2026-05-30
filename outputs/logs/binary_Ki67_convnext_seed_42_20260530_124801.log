@@ -1,0 +1,13 @@
+2026-05-30 12:48:01,459 | INFO | Log file: /raid/home/user3/projects/ruslan_ihc/outputs/logs/binary_Ki67_convnext_seed_42_20260530_124801.log
+2026-05-30 12:48:06,143 | INFO | Marker: Ki67
+2026-05-30 12:48:06,143 | INFO | Images: 20656
+2026-05-30 12:48:06,143 | INFO | Patients: 60
+2026-05-30 12:48:06,143 | INFO | Label counts: {1: 18900, 0: 1756}
+2026-05-30 12:48:06,143 | INFO | Class meaning: 0=negative, 1=positive
+2026-05-30 12:48:06,171 | INFO | Splitter: StratifiedGroupKFold
+2026-05-30 12:48:06,173 | INFO | Fold 1/5 | train=15673 imgs/48 patients {1: 14466, 0: 1207} | val=4983 imgs/12 patients {1: 4434, 0: 549} | overlap=0
+2026-05-30 12:48:06,206 | INFO | Fold 2/5 | train=16164 imgs/46 patients {1: 14784, 0: 1380} | val=4492 imgs/14 patients {1: 4116, 0: 376} | overlap=0
+2026-05-30 12:48:06,238 | INFO | Fold 3/5 | train=15763 imgs/47 patients {1: 14343, 0: 1420} | val=4893 imgs/13 patients {1: 4557, 0: 336} | overlap=0
+2026-05-30 12:48:06,269 | INFO | Fold 4/5 | train=17584 imgs/50 patients {1: 16124, 0: 1460} | val=3072 imgs/10 patients {0: 296, 1: 2776} | overlap=0
+2026-05-30 12:48:06,301 | INFO | Fold 5/5 | train=17440 imgs/49 patients {1: 15883, 0: 1557} | val=3216 imgs/11 patients {1: 3017, 0: 199} | overlap=0
+2026-05-30 12:48:06,331 | INFO | Dry run requested; skipping training.

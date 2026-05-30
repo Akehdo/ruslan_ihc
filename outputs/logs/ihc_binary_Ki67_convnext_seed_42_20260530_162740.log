@@ -1,0 +1,114 @@
+2026-05-30 16:27:40,566 | INFO | Log file: /raid/home/user3/projects/ruslan_ihc/outputs/logs/ihc_binary_Ki67_convnext_seed_42_20260530_162740.log
+2026-05-30 16:27:41,057 | INFO | Marker: Ki67
+2026-05-30 16:27:41,057 | INFO | Manifest: src/data/ihc_binary_dataset/manifest.csv
+2026-05-30 16:27:41,057 | INFO | Images: 20656
+2026-05-30 16:27:41,059 | INFO | Patients: 60
+2026-05-30 16:27:41,060 | INFO | Label counts: {1: 18900, 0: 1756}
+2026-05-30 16:27:41,061 | INFO | Class meaning: 0=negative, 1=positive
+2026-05-30 16:27:41,061 | INFO | Splitter: StratifiedGroupKFold
+2026-05-30 16:27:41,064 | INFO | Fold 1/5 | train=15673 imgs/48 patients {1: 14466, 0: 1207} | val=4983 imgs/12 patients {1: 4434, 0: 549} | overlap=0
+2026-05-30 16:27:41,095 | INFO | Fold 2/5 | train=16164 imgs/46 patients {1: 14784, 0: 1380} | val=4492 imgs/14 patients {1: 4116, 0: 376} | overlap=0
+2026-05-30 16:27:41,126 | INFO | Fold 3/5 | train=15763 imgs/47 patients {1: 14343, 0: 1420} | val=4893 imgs/13 patients {1: 4557, 0: 336} | overlap=0
+2026-05-30 16:27:41,156 | INFO | Fold 4/5 | train=17584 imgs/50 patients {1: 16124, 0: 1460} | val=3072 imgs/10 patients {0: 296, 1: 2776} | overlap=0
+2026-05-30 16:27:41,187 | INFO | Fold 5/5 | train=17440 imgs/49 patients {1: 15883, 0: 1557} | val=3216 imgs/11 patients {1: 3017, 0: 199} | overlap=0
+2026-05-30 16:27:41,215 | INFO | Device: cuda
+2026-05-30 16:27:41,215 | INFO | CUDA device: NVIDIA H200
+2026-05-30 16:27:41,215 | INFO | AMP enabled: True
+2026-05-30 16:27:41,215 | INFO | === Training fold 1/5 ===
+2026-05-30 16:28:03,114 | INFO | Epoch [1/50] train_loss=0.2586 val_loss=0.0964 acc=0.9563 f1=0.9749 auc=0.9918
+2026-05-30 16:28:03,314 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_1_seed_42_best.pth
+2026-05-30 16:28:24,297 | INFO | Epoch [2/50] train_loss=0.1558 val_loss=0.1150 acc=0.9653 f1=0.9803 auc=0.9906
+2026-05-30 16:28:46,167 | INFO | Epoch [3/50] train_loss=0.1413 val_loss=0.0956 acc=0.9314 f1=0.9600 auc=0.9916
+2026-05-30 16:28:46,424 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_1_seed_42_best.pth
+2026-05-30 16:29:08,271 | INFO | Epoch [4/50] train_loss=0.1375 val_loss=0.0933 acc=0.9633 f1=0.9791 auc=0.9921
+2026-05-30 16:29:08,543 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_1_seed_42_best.pth
+2026-05-30 16:29:29,993 | INFO | Epoch [5/50] train_loss=0.1272 val_loss=0.0795 acc=0.9550 f1=0.9742 auc=0.9934
+2026-05-30 16:29:30,261 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_1_seed_42_best.pth
+2026-05-30 16:29:52,325 | INFO | Epoch [6/50] train_loss=0.1188 val_loss=0.0915 acc=0.9639 f1=0.9794 auc=0.9926
+2026-05-30 16:30:15,910 | INFO | Epoch [7/50] train_loss=0.1189 val_loss=0.0786 acc=0.9645 f1=0.9797 auc=0.9939
+2026-05-30 16:30:16,174 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_1_seed_42_best.pth
+2026-05-30 16:30:37,441 | INFO | Epoch [8/50] train_loss=0.1068 val_loss=0.0935 acc=0.9655 f1=0.9804 auc=0.9938
+2026-05-30 16:30:58,014 | INFO | Epoch [9/50] train_loss=0.1045 val_loss=0.0881 acc=0.9577 f1=0.9758 auc=0.9930
+2026-05-30 16:31:19,516 | INFO | Epoch [10/50] train_loss=0.0913 val_loss=0.0956 acc=0.9494 f1=0.9709 auc=0.9913
+2026-05-30 16:31:41,644 | INFO | Epoch [11/50] train_loss=0.1085 val_loss=0.0939 acc=0.9567 f1=0.9751 auc=0.9917
+2026-05-30 16:32:03,290 | INFO | Epoch [12/50] train_loss=0.0969 val_loss=0.1095 acc=0.9649 f1=0.9800 auc=0.9911
+2026-05-30 16:32:03,421 | INFO | Early stopping triggered
+2026-05-30 16:32:03,424 | INFO | === Training fold 2/5 ===
+2026-05-30 16:32:26,266 | INFO | Epoch [1/50] train_loss=0.2436 val_loss=0.1754 acc=0.9566 f1=0.9760 auc=0.9823
+2026-05-30 16:32:26,492 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_2_seed_42_best.pth
+2026-05-30 16:32:48,498 | INFO | Epoch [2/50] train_loss=0.1448 val_loss=0.1829 acc=0.9014 f1=0.9433 auc=0.9838
+2026-05-30 16:33:12,520 | INFO | Epoch [3/50] train_loss=0.1301 val_loss=0.1596 acc=0.9619 f1=0.9790 auc=0.9852
+2026-05-30 16:33:12,791 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_2_seed_42_best.pth
+2026-05-30 16:33:33,845 | INFO | Epoch [4/50] train_loss=0.1235 val_loss=0.1244 acc=0.9595 f1=0.9775 auc=0.9879
+2026-05-30 16:33:34,125 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_2_seed_42_best.pth
+2026-05-30 16:33:55,129 | INFO | Epoch [5/50] train_loss=0.1180 val_loss=0.1560 acc=0.9613 f1=0.9786 auc=0.9849
+2026-05-30 16:34:17,005 | INFO | Epoch [6/50] train_loss=0.1126 val_loss=0.1536 acc=0.9635 f1=0.9799 auc=0.9864
+2026-05-30 16:34:39,929 | INFO | Epoch [7/50] train_loss=0.1176 val_loss=0.1623 acc=0.9230 f1=0.9563 auc=0.9859
+2026-05-30 16:35:02,680 | INFO | Epoch [8/50] train_loss=0.1059 val_loss=0.1877 acc=0.9655 f1=0.9810 auc=0.9865
+2026-05-30 16:35:25,413 | INFO | Epoch [9/50] train_loss=0.0977 val_loss=0.1377 acc=0.9599 f1=0.9778 auc=0.9850
+2026-05-30 16:35:25,548 | INFO | Early stopping triggered
+2026-05-30 16:35:25,551 | INFO | === Training fold 3/5 ===
+2026-05-30 16:35:49,475 | INFO | Epoch [1/50] train_loss=0.2269 val_loss=0.1825 acc=0.9387 f1=0.9662 auc=0.9789
+2026-05-30 16:35:50,093 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_3_seed_42_best.pth
+2026-05-30 16:36:10,887 | INFO | Epoch [2/50] train_loss=0.1437 val_loss=0.1769 acc=0.9211 f1=0.9559 auc=0.9840
+2026-05-30 16:36:11,162 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_3_seed_42_best.pth
+2026-05-30 16:36:31,959 | INFO | Epoch [3/50] train_loss=0.1352 val_loss=0.1301 acc=0.9485 f1=0.9717 auc=0.9888
+2026-05-30 16:36:32,229 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_3_seed_42_best.pth
+2026-05-30 16:36:53,276 | INFO | Epoch [4/50] train_loss=0.1236 val_loss=0.1369 acc=0.9418 f1=0.9679 auc=0.9880
+2026-05-30 16:37:14,037 | INFO | Epoch [5/50] train_loss=0.1191 val_loss=0.1224 acc=0.9550 f1=0.9754 auc=0.9898
+2026-05-30 16:37:14,306 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_3_seed_42_best.pth
+2026-05-30 16:37:35,219 | INFO | Epoch [6/50] train_loss=0.1083 val_loss=0.1505 acc=0.9538 f1=0.9747 auc=0.9885
+2026-05-30 16:37:57,440 | INFO | Epoch [7/50] train_loss=0.1059 val_loss=0.1307 acc=0.9597 f1=0.9781 auc=0.9895
+2026-05-30 16:38:18,212 | INFO | Epoch [8/50] train_loss=0.1035 val_loss=0.1473 acc=0.9313 f1=0.9618 auc=0.9862
+2026-05-30 16:38:40,184 | INFO | Epoch [9/50] train_loss=0.1011 val_loss=0.1271 acc=0.9485 f1=0.9717 auc=0.9881
+2026-05-30 16:39:01,272 | INFO | Epoch [10/50] train_loss=0.0936 val_loss=0.1623 acc=0.9497 f1=0.9724 auc=0.9820
+2026-05-30 16:39:01,412 | INFO | Early stopping triggered
+2026-05-30 16:39:01,416 | INFO | === Training fold 4/5 ===
+2026-05-30 16:39:25,500 | INFO | Epoch [1/50] train_loss=0.2433 val_loss=0.1509 acc=0.9388 f1=0.9652 auc=0.9844
+2026-05-30 16:39:26,115 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_4_seed_42_best.pth
+2026-05-30 16:39:48,436 | INFO | Epoch [2/50] train_loss=0.1553 val_loss=0.1510 acc=0.9372 f1=0.9642 auc=0.9854
+2026-05-30 16:40:09,912 | INFO | Epoch [3/50] train_loss=0.1368 val_loss=0.1382 acc=0.9577 f1=0.9762 auc=0.9870
+2026-05-30 16:40:10,204 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_4_seed_42_best.pth
+2026-05-30 16:40:30,917 | INFO | Epoch [4/50] train_loss=0.1328 val_loss=0.1539 acc=0.9147 f1=0.9506 auc=0.9880
+2026-05-30 16:40:53,783 | INFO | Epoch [5/50] train_loss=0.1245 val_loss=0.1303 acc=0.9440 f1=0.9681 auc=0.9894
+2026-05-30 16:40:54,067 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_4_seed_42_best.pth
+2026-05-30 16:41:16,877 | INFO | Epoch [6/50] train_loss=0.1280 val_loss=0.1422 acc=0.9447 f1=0.9686 auc=0.9883
+2026-05-30 16:41:39,821 | INFO | Epoch [7/50] train_loss=0.1138 val_loss=0.1767 acc=0.9121 f1=0.9491 auc=0.9872
+2026-05-30 16:42:00,692 | INFO | Epoch [8/50] train_loss=0.1174 val_loss=0.1290 acc=0.9557 f1=0.9750 auc=0.9876
+2026-05-30 16:42:00,958 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_4_seed_42_best.pth
+2026-05-30 16:42:23,491 | INFO | Epoch [9/50] train_loss=0.1051 val_loss=0.1508 acc=0.9538 f1=0.9739 auc=0.9873
+2026-05-30 16:42:46,216 | INFO | Epoch [10/50] train_loss=0.1119 val_loss=0.1254 acc=0.9492 f1=0.9712 auc=0.9903
+2026-05-30 16:42:46,507 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_4_seed_42_best.pth
+2026-05-30 16:43:08,000 | INFO | Epoch [11/50] train_loss=0.1041 val_loss=0.1271 acc=0.9535 f1=0.9737 auc=0.9906
+2026-05-30 16:43:30,065 | INFO | Epoch [12/50] train_loss=0.0941 val_loss=0.1446 acc=0.9535 f1=0.9737 auc=0.9875
+2026-05-30 16:43:52,545 | INFO | Epoch [13/50] train_loss=0.1008 val_loss=0.1376 acc=0.9538 f1=0.9739 auc=0.9894
+2026-05-30 16:44:13,712 | INFO | Epoch [14/50] train_loss=0.0852 val_loss=0.1448 acc=0.9629 f1=0.9792 auc=0.9877
+2026-05-30 16:44:35,502 | INFO | Epoch [15/50] train_loss=0.0924 val_loss=0.1749 acc=0.9492 f1=0.9713 auc=0.9831
+2026-05-30 16:44:35,644 | INFO | Early stopping triggered
+2026-05-30 16:44:35,648 | INFO | === Training fold 5/5 ===
+2026-05-30 16:44:58,473 | INFO | Epoch [1/50] train_loss=0.2513 val_loss=0.1184 acc=0.9543 f1=0.9751 auc=0.9909
+2026-05-30 16:44:58,680 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_5_seed_42_best.pth
+2026-05-30 16:45:21,454 | INFO | Epoch [2/50] train_loss=0.1525 val_loss=0.1341 acc=0.9798 f1=0.9892 auc=0.9928
+2026-05-30 16:45:44,717 | INFO | Epoch [3/50] train_loss=0.1414 val_loss=0.1010 acc=0.9723 f1=0.9851 auc=0.9934
+2026-05-30 16:45:44,994 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_5_seed_42_best.pth
+2026-05-30 16:46:07,169 | INFO | Epoch [4/50] train_loss=0.1312 val_loss=0.1309 acc=0.9761 f1=0.9872 auc=0.9908
+2026-05-30 16:46:29,015 | INFO | Epoch [5/50] train_loss=0.1241 val_loss=0.0970 acc=0.9667 f1=0.9820 auc=0.9937
+2026-05-30 16:46:29,272 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_5_seed_42_best.pth
+2026-05-30 16:46:51,319 | INFO | Epoch [6/50] train_loss=0.1204 val_loss=0.0874 acc=0.9624 f1=0.9796 auc=0.9942
+2026-05-30 16:46:51,590 | INFO | New best checkpoint: /raid/home/user3/projects/ruslan_ihc/checkpoints/ihc_binary_Ki67_convnext_fold_5_seed_42_best.pth
+2026-05-30 16:47:13,104 | INFO | Epoch [7/50] train_loss=0.1113 val_loss=0.1086 acc=0.9708 f1=0.9842 auc=0.9927
+2026-05-30 16:47:35,780 | INFO | Epoch [8/50] train_loss=0.1172 val_loss=0.1041 acc=0.9711 f1=0.9844 auc=0.9927
+2026-05-30 16:47:59,261 | INFO | Epoch [9/50] train_loss=0.1151 val_loss=0.0997 acc=0.9776 f1=0.9880 auc=0.9939
+2026-05-30 16:48:22,567 | INFO | Epoch [10/50] train_loss=0.1001 val_loss=0.1073 acc=0.9757 f1=0.9870 auc=0.9932
+2026-05-30 16:48:45,375 | INFO | Epoch [11/50] train_loss=0.1017 val_loss=0.0900 acc=0.9751 f1=0.9866 auc=0.9924
+2026-05-30 16:48:45,521 | INFO | Early stopping triggered
+2026-05-30 16:48:45,525 | INFO | 
+Binary IHC Summary (Ki67, convnext, 5-fold, seed 42)
+Splitter: StratifiedGroupKFold
+accuracy: 0.9581 +/- 0.0061
+precision: 0.9954 +/- 0.0016
+recall: 0.9587 +/- 0.0065
+f1: 0.9767 +/- 0.0035
+macro_f1: 0.8821 +/- 0.0222
+roc_auc: 0.9912 +/- 0.0028
+
