@@ -1,8 +1,0 @@
-2026-05-30 12:51:37,921 | INFO | Log file: /raid/home/user3/projects/ruslan_ihc/outputs/logs/binary_Her2_convnext_seed_42_20260530_125137.log
-2026-05-30 12:51:38,217 | INFO | Verifying image readability before training...
-2026-05-30 12:51:39,093 | WARNING | Skipped 20713 unreadable image(s). List: /raid/home/user3/projects/ruslan_ihc/outputs/bad_images_Her2.csv
-2026-05-30 12:51:39,093 | INFO | Marker: Her2
-2026-05-30 12:51:39,093 | INFO | Images: 0
-2026-05-30 12:51:39,093 | INFO | Patients: 0
-2026-05-30 12:51:39,094 | INFO | Label counts: {}
-2026-05-30 12:51:39,094 | INFO | Class meaning: 0=negative, 1=positive
