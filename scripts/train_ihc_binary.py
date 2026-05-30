@@ -205,7 +205,6 @@ def write_split(marker: str, fold: int, records, train_idx, val_idx):
 
 def append_metrics(rows: list[dict]):
     METRICS_CSV.parent.mkdir(parents=True, exist_ok=True)
-    exists = METRICS_CSV.exists()
     fieldnames = [
         "marker",
         "model",
@@ -230,6 +229,17 @@ def append_metrics(rows: list[dict]):
         "fn",
         "tp",
     ]
+    exists = METRICS_CSV.exists()
+    if exists:
+        with METRICS_CSV.open("r", encoding="utf-8", newline="") as file:
+            reader = csv.reader(file)
+            current_header = next(reader, [])
+        if current_header != fieldnames:
+            backup_path = METRICS_CSV.with_suffix(".csv.bak")
+            METRICS_CSV.replace(backup_path)
+            print(f"Existing metrics CSV had an old schema and was moved to: {backup_path}")
+            exists = False
+
     with METRICS_CSV.open("a", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         if not exists:
