@@ -31,7 +31,7 @@ from common import (  # noqa: E402
     get_transforms,
     set_seed,
 )
-from ihc_binary import IHCBinaryPatchDataset, iter_markers, load_marker_records  # noqa: E402
+from ihc_binary import IHCBinaryPatchDataset, filter_readable_records, iter_markers, load_marker_records  # noqa: E402
 
 
 try:
@@ -65,6 +65,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--channels-last", action="store_true")
     parser.add_argument("--prefetch-factor", type=int, default=2)
     parser.add_argument("--limit-per-marker", type=int, default=None, help="Debug only: limit records per marker")
+    parser.add_argument(
+        "--skip-bad-images",
+        action="store_true",
+        help="Verify image files before training and skip unreadable/corrupted files.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Validate data and folds without training")
     return parser.parse_args()
 
@@ -270,6 +275,20 @@ def summarize_records(marker: str, records, logger: logging.Logger):
 def train_marker(marker: str, args: argparse.Namespace):
     logger = setup_logger(marker, args)
     records = load_marker_records(marker)
+    if args.skip_bad_images:
+        logger.info("Verifying image readability before training...")
+        records, bad_records = filter_readable_records(records)
+        if bad_records:
+            bad_path = OUTPUTS_DIR / f"bad_images_{marker}.csv"
+            with bad_path.open("w", newline="", encoding="utf-8") as file:
+                writer = csv.writer(file)
+                writer.writerow(["marker", "patient_id", "label", "raw_label", "path"])
+                for record in bad_records:
+                    writer.writerow([record.marker, record.patient_id, record.label, record.raw_label, record.path])
+            logger.warning("Skipped %s unreadable image(s). List: %s", len(bad_records), bad_path)
+        else:
+            logger.info("All image files are readable.")
+
     if args.limit_per_marker is not None:
         records = records[: args.limit_per_marker]
 

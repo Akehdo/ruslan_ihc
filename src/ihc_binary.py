@@ -149,7 +149,28 @@ class IHCBinaryPatchDataset(Dataset):
 
     def __getitem__(self, index):
         record = self.records[index]
-        image = Image.open(record.path).convert("RGB")
+        with Image.open(record.path) as opened:
+            image = opened.convert("RGB")
         if self.transform is not None:
             image = self.transform(image)
         return image, record.label
+
+
+def is_readable_image(path: Path) -> bool:
+    try:
+        with Image.open(path) as image:
+            image.verify()
+        return True
+    except Exception:
+        return False
+
+
+def filter_readable_records(records: list[PatchRecord]) -> tuple[list[PatchRecord], list[PatchRecord]]:
+    valid_records = []
+    bad_records = []
+    for record in records:
+        if is_readable_image(record.path):
+            valid_records.append(record)
+        else:
+            bad_records.append(record)
+    return valid_records, bad_records
