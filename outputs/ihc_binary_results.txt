@@ -34,3 +34,39 @@ f1: 0.9776 +/- 0.0054
 macro_f1: 0.8859 +/- 0.0171
 roc_auc: 0.9877 +/- 0.0013
 
+Binary IHC Summary (Her2, resnet50, 5-fold, seed 42)
+Splitter: StratifiedGroupKFold
+accuracy: 0.9949 +/- 0.0101
+precision: 0.9889 +/- 0.0228
+recall: 0.9980 +/- 0.0014
+f1: 0.9934 +/- 0.0120
+macro_f1: 0.9945 +/- 0.0103
+roc_auc: 0.9997 +/- 0.0005
+
+Binary IHC Summary (ER, resnet50, 5-fold, seed 42)
+Splitter: StratifiedGroupKFold
+accuracy: 0.9781 +/- 0.0126
+precision: 0.9872 +/- 0.0165
+recall: 0.9869 +/- 0.0025
+f1: 0.9870 +/- 0.0076
+macro_f1: 0.9591 +/- 0.0217
+roc_auc: 0.9931 +/- 0.0072
+
+Binary IHC Summary (PR, resnet50, 5-fold, seed 42)
+Splitter: StratifiedGroupKFold
+accuracy: 0.9700 +/- 0.0098
+precision: 0.9907 +/- 0.0017
+recall: 0.9752 +/- 0.0127
+f1: 0.9829 +/- 0.0060
+macro_f1: 0.9294 +/- 0.0143
+roc_auc: 0.9849 +/- 0.0078
+
+Binary IHC Summary (Ki67, resnet50, 5-fold, seed 42)
+Splitter: StratifiedGroupKFold
+accuracy: 0.9575 +/- 0.0116
+precision: 0.9937 +/- 0.0016
+recall: 0.9595 +/- 0.0122
+f1: 0.9763 +/- 0.0068
+macro_f1: 0.8821 +/- 0.0225
+roc_auc: 0.9885 +/- 0.0023
+
